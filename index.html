@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Leo Club of Moratuwa — a dynamic community of young leaders dedicated to service, leadership, and growth since 1980." />
+  <meta name="theme-color" content="#CC0000" />
+  <!-- Favicon: uses the club logo PNG. Replace with a .ico file for best browser support. -->
+  <link rel="icon" type="image/png" href="images/logo/logo.png" />
+  <title>Leo Club of Moratuwa</title>
+
+  <!-- Social share preview (Facebook, WhatsApp, Instagram, etc.) -->
+  <!-- TODO: set og:url to the live domain once this site is deployed/hosted -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Leo Club of Moratuwa" />
+  <meta property="og:description" content="Leo Club of Moratuwa — a dynamic community of young leaders dedicated to service, leadership, and growth since 1980." />
+  <meta property="og:image" content="images/logo/logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Leo Club of Moratuwa" />
+  <meta name="twitter:description" content="Leo Club of Moratuwa — a dynamic community of young leaders dedicated to service, leadership, and growth since 1980." />
+  <meta name="twitter:image" content="images/logo/logo.png" />
+  <link rel="stylesheet" href="css/style.css?v=20260730" />
+  <link rel="stylesheet" href="css/responsive.css?v=20260730" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <img src="images/logo/logo.png" alt="Leo Club of Moratuwa" class="nav-club-logo" />
+        Leo Club <span>of Moratuwa</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <!-- TODO: replace "#" with the live external blog URL once hosted -->
+        <li><a href="#" target="_blank" rel="noopener noreferrer">Blog</a></li>
+        <li><a href="#projectmap">Map</a></li>
+        <li><a href="#history">History</a></li>
+        <li><a href="#contact" class="btn-nav">Contact</a></li>
+        <li><a href="https://moraconnect.com/" class="btn-nav btn-nav-portal" target="_blank" rel="noopener noreferrer">Mora Connect</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-overlay"></div>
+
+    <!-- Kanji watermark 武 (warrior/brave) -->
+    <div class="hero-kanji">武</div>
+
+    <!-- Club logo watermark — right side, mirrors the kanji on the left -->
+    <img src="images/logo/logo.png" alt="" class="hero-logo-watermark" aria-hidden="true" />
+
+    <div class="hero-content">
+      <p class="hero-tag"><span class="hero-tag-typed" id="heroTagTyped"></span><span class="hero-tag-cursor">|</span></p>
+      <h1>Bold in <span class="accent">Service.</span><br>United in <span class="accent">Purpose.</span></h1>
+      <p class="hero-sub">The Leo Club of Moratuwa is a dynamic community of young leaders dedicated to service, leadership, and growth. We empower our members to create positive change, develop leadership skills, and build lasting connections that impact lives beyond boundaries.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">Explore Projects</a>
+        <a href="#about" class="btn-outline">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section class="stats-section">
+    <div class="container">
+      <p class="section-tag">PROVEN TRACK</p>
+      <h2 class="section-title spaced">Impact You Can Count On</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-star"></i></div>
+          <h3 class="counter" data-target="46">0</h3>
+          <p>Years of Impact</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
+          <h3 class="counter" data-target="200">0</h3>
+          <p>Projects Completed</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-users"></i></div>
+          <h3 class="counter" data-target="1000">0</h3>
+          <p>Leos</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+          <h3 class="counter" data-target="250">0</h3>
+          <p>Awards</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about-section" id="about">
+    <div class="container about-grid">
+      <div class="about-image">
+        <div class="img-box">
+          <div class="img-accent"></div>
+          <div class="about-img-placeholder">
+            <img loading="lazy" src="images/aboutUs/aboutUs.jpg" alt="Leo Club of Moratuwa members" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-paw&quot;&gt;&lt;/i&gt;'" />
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="section-tag">ABOUT US</p>
+        <h2 class="section-title spaced">Where Passion Meets Purpose.</h2>
+        <p>Every great story begins with a purpose. Ours begins with service. The Leo Club of Moratuwa is more than a youth organization. It is a family of passionate young leaders united by a shared commitment to serve, lead, and inspire. Every project we undertake, every hand we extend, and every life we touch becomes another chapter in our journey of creating meaningful change. Together, we believe that true leadership is not measured by titles, but by the positive impact we leave on the lives of others.</p>
+        <p><strong>Mission:</strong> To inspire and empower young leaders through meaningful service, foster fellowship and personal growth, and create lasting positive change with compassion, integrity, and dedication.</p>
+        <p><strong>Vision:</strong> To build a future where every act of kindness inspires hope, every leader serves with purpose, and every community grows stronger through selfless service.</p>
+        <a href="#contact" class="btn-primary about-cta">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== APPROACH ===== -->
+  <section class="approach-section">
+    <div class="container">
+      <p class="section-tag">OUR APPROACH</p>
+      <h2 class="section-title spaced">From Vision to Action</h2>
+      <div class="approach-grid">
+        <div class="approach-card">
+          <div class="step-num">01</div>
+          <h3>Inspire &amp; Unite</h3>
+          <p>Every meaningful journey begins with people. We bring passionate individuals together, share ideas, strengthen friendships, and inspire one another to serve with purpose.</p>
+        </div>
+        <div class="approach-card">
+          <div class="step-num">02</div>
+          <h3>Serve with Purpose</h3>
+          <p>From planning community initiatives to carrying them out with dedication, every project is driven by compassion, teamwork, and the desire to create a lasting impact.</p>
+        </div>
+        <div class="approach-card">
+          <div class="step-num">03</div>
+          <h3>Reflect &amp; Inspire</h3>
+          <p>Every service project becomes a story worth sharing. We celebrate our achievements, learn from every experience, and continue inspiring others through the journey of Leoism.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="projects-section" id="projects">
+    <div class="container">
+      <p class="section-tag">OUR PROJECTS</p>
+      <h2 class="section-title spaced">Where Ideas Become Impact</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-img"><img loading="lazy" src="images/Projects/Aloka.jpg" alt="Aloka 26" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-handshake&quot;&gt;&lt;/i&gt;'" /></div>
+          <div class="project-info">
+            <h3>Aloka 26</h3>
+            <p>A spiritual beginning to the new Leoistic year, where members gathered at Bellanwila Rajamaha Viharaya to seek blessings, unity, and inspiration for another year of meaningful service.
+</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img"><img loading="lazy" src="images/Projects/TriLife.jpg" alt="Tri Life 26" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-heartbeat&quot;&gt;&lt;/i&gt;'" /></div>
+          <div class="project-info">
+            <h3>Tri Life 26 — Phase 01, Day 01</h3>
+            <p>Through the Paws of Hope initiative, our members shared nutritious meals with stray dogs in Rawathawaththa, proving that even the smallest act of kindness can make a lasting difference.</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img"><img loading="lazy" src="images/Projects/LeoVoyage.jpg" alt="Leo Voyage" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-handshake&quot;&gt;&lt;/i&gt;'" /></div>
+          <div class="project-info">
+            <h3>Leo Voyage</h3>
+            <p>A collaborative orientation programme with the Leo Club of Prince of Wales College, inspiring aspiring Leos to begin their leadership journey with confidence, purpose, and service.</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img"><img loading="lazy" src="images/Projects/Saviya.jpg" alt="Saviya" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt;'" /></div>
+          <div class="project-info">
+            <h3>Saviya</h3>
+            <p>An entrepreneurship programme designed to empower unemployed and low income families with the knowledge and practical skills needed to build sustainable livelihoods.</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img"><img loading="lazy" src="images/Projects/LeoApeDansala.jpg" alt="Leo Ape Dansala" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-hand-holding-heart&quot;&gt;&lt;/i&gt;'" /></div>
+          <div class="project-info">
+            <h3>Leo Ape Dansala</h3>
+            <p>The first Leo Ape Dansala of the new Leoistic year began with an ice cream dansala on July Poya, spreading joy, kindness, and smiles while continuing a cherished tradition of community service.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEAM ===== -->
+  <section class="team-section" id="team">
+    <div class="container">
+      <p class="section-tag">OUR TEAM</p>
+      <h2 class="section-title spaced">The People Behind the Purpose</h2>
+      <p class="section-sub">Passion has a face. Meet the Leaders powering the Leo Club of Moratuwa.</p>
+
+      <div class="team-carousel-wrap">
+        <button class="team-arrow team-prev" id="teamPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+
+        <div class="team-viewport">
+          <div class="team-track" id="teamTrack">
+
+            <!-- 01 President -->
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/President.jpg" alt="President" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Leo Lion Nuran Gunawardana</h3>
+              <p class="role">President</p>
+              <div class="team-social">
+                <a aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+
+            <!-- 02 IPP -->
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/IPP.jpg" alt="IPP" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Leo Lion Chamal Pramod</h3>
+              <p class="role">Immediate Past President</p>
+              <div class="team-social">
+                <a aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+
+            <!-- 03 VP1 -->
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/VicePresident_1.jpg" alt="VP1" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Leo Vihanga Kothalawala</h3>
+              <p class="role">Vice President I</p>
+              <div class="team-social">
+                <a aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+
+            <!-- 04 VP2 -->
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/VicePresident_2.jpg" alt="VP2" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Leo Lion Dineththra Prabhashwari</h3>
+              <p class="role">Vice President II</p>
+              <div class="team-social">
+                <a aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+
+            <!-- 05 Secretary -->
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/secreaatary.jpg" alt="Secretary" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Leo Dewmini Chamodya</h3>
+              <p class="role">Secretary</p>
+              <div class="team-social">
+                <a aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+
+            <!-- 06 Asst. Secretary I -->
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/Assistant_secreaatary_1.jpg" alt="Asst Secretary I" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Leo Isum Gunasekara</h3>
+              <p class="role">Assistant Secretary I</p>
+              <div class="team-social">
+                <a aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+
+            <!-- 07 Asst. Secretary II -->
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/Assistant_secreaatary_2.jpg" alt="Asst Secretary II" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Leo Sathmi Perera</h3>
+              <p class="role">Assistant Secretary II</p>
+              <div class="team-social">
+                <a aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+
+            <!-- 08 Treasurer -->
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/treasurer.jpg" alt="Treasurer" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Leo Mamith Fernando</h3>
+              <p class="role">Treasurer</p>
+              <div class="team-social">
+                <a aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+
+            <!-- 09 Asst. Treasurer -->
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/Assistant_treasurer.jpg" alt="Asst Treasurer" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Leo Lion Buddhini Karunarathne</h3>
+              <p class="role">Assistant Treasurer</p>
+              <div class="team-social">
+                <a aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+
+            <!-- 10 Head of Directors -->
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/HeadOfDirectors.jpg" alt="Head of Directors" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Leo Dinithi Aluvihare</h3>
+              <p class="role">Head of Directors</p>
+              <div class="team-social">
+                <a aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+
+            <!-- 11–18 Directors -->
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/Orientattion_Director.jpg" alt="Director" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Bisandi Chithsani</h3><p class="role">Orientation &amp; Leadership Development Director</p>
+              <div class="team-social"><a><i class="fab fa-linkedin"></i></a><a><i class="fab fa-instagram"></i></a></div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/IR_Director.jpg" alt="Director" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Thisarika Kawyangi</h3><p class="role">International Relations Director</p>
+              <div class="team-social"><a><i class="fab fa-linkedin"></i></a><a><i class="fab fa-instagram"></i></a></div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/Sport_director.jpg" alt="Director" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Thieraaz Wijesooriya</h3><p class="role">Sports Director</p>
+              <div class="team-social"><a><i class="fab fa-linkedin"></i></a><a><i class="fab fa-instagram"></i></a></div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/IT_Director.jpg" alt="Director" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Disitha Ranasinghe</h3><p class="role">IT &amp; Digital Innovation Director</p>
+              <div class="team-social"><a><i class="fab fa-linkedin"></i></a><a><i class="fab fa-instagram"></i></a></div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/Media_Director.jpg" alt="Director" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Treveen Rozairo</h3><p class="role">Media Director</p>
+              <div class="team-social"><a><i class="fab fa-linkedin"></i></a><a><i class="fab fa-instagram"></i></a></div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/PR_Director.jpg" alt="Director" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Dizen Ukwaththa</h3><p class="role">Public Relations Director</p>
+              <div class="team-social"><a><i class="fab fa-linkedin"></i></a><a><i class="fab fa-instagram"></i></a></div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/Membership_Director.jpg" alt="Director" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Nelindu Nithijaya</h3><p class="role">Membership &amp; Fellowship Director</p>
+              <div class="team-social"><a><i class="fab fa-linkedin"></i></a><a><i class="fab fa-instagram"></i></a></div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/Fundrasing_Director.jpg" alt="Director" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Nadew Methdula</h3><p class="role">Fundraising Director</p>
+              <div class="team-social"><a><i class="fab fa-linkedin"></i></a><a><i class="fab fa-instagram"></i></a></div>
+            </div>
+
+            <!-- 19 Editor -->
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/Editor.jpg" alt="Editor" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Leo Buddhini Karunarathne</h3>
+              <p class="role">Editor</p>
+              <div class="team-social">
+                <a aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+
+            <!-- 20 Co Editor -->
+            <div class="team-card">
+              <div class="team-avatar"><img loading="lazy" src="images/team/co_editor.jpg" alt="Co Editor" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;'" /></div>
+              <h3>Leo Sathmi Perera</h3>
+              <p class="role">Co Editor</p>
+              <div class="team-social">
+                <a aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div><!-- end track -->
+        </div><!-- end viewport -->
+
+        <button class="team-arrow team-next" id="teamNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+      </div><!-- end carousel-wrap -->
+
+      <!-- Dots -->
+      <div class="team-dots" id="teamDots"></div>
+
+    </div>
+  </section>
+
+  <!-- ===== AWARDS ===== -->
+  <section class="awards-section" id="awards">
+    <div class="container">
+      <p class="section-tag">AWARDS</p>
+      <h2 class="section-title spaced">Honored, But Never Finished</h2>
+      <div class="awards-grid">
+        <div class="award-card">
+          <div class="award-icon"><img loading="lazy" src="images/awards/awards.jpg" alt="Most Outstanding Community Based Leo Club award" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-ranking-star&quot;&gt;&lt;/i&gt;'" /></div>
+          <h3>Most Outstanding Community Based Leo Club</h3>
+          <p>1st Runners Up <br> Leo District 306 D1 — 2025/26</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECT MAP ===== -->
+  <section class="projectmap-section" id="projectmap">
+    <div class="container">
+      <p class="section-tag">MAP</p>
+      <h2 class="section-title spaced">Where We Serve</h2>
+      <p class="section-sub">Explore the communities across Sri Lanka that the Leo Club of Moratuwa has reached through our projects and service initiatives.</p>
+      <div class="projectmap-wrap">
+        <div id="leoMap"></div>
+        <div class="projectmap-legend">
+          <h4><i class="fas fa-map-marker-alt"></i> Project Locations</h4>
+          <ul id="mapLegendList"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLUB HISTORY ===== -->
+  <section class="history-section" id="history">
+    <div class="container">
+      <p class="section-tag">CLUB HISTORY</p>
+      <h2 class="section-title spaced">46 Years of Legacy</h2>
+      <p class="section-sub">From our founding in 1980 to the present day.<br>A proud journey of service, leadership, and fellowship through 46 remarkable years and 46 visionary presidents.</p>
+
+      <div class="history-timeline">
+
+        <!-- ══════════════════════════════
+             FOUNDING — 1980
+        ══════════════════════════════ -->
+        <div class="tl-milestone founding">
+          <div class="tl-ms-line"></div>
+          <div class="tl-ms-content">
+            <span class="tl-ms-year">1980</span>
+            <h3>Club Founded</h3>
+            <p>The Leo Club of Moratuwa was officially chartered, igniting a legacy of service, leadership, and fellowship that endures to this day.</p>
+          </div>
+          <div class="tl-ms-line"></div>
+        </div>
+
+        <!-- ══ 1980s ══ -->
+        <div class="tl-decade-band">
+          <span>1980s</span>
+          <span class="tl-decade-sub">The Foundation Years</span>
+        </div>
+        <div class="presidents-grid">
+          <div class="pres-card"><div class="pres-num">01</div><div class="pres-photo"><img loading="lazy" src="images/presidents/01.jpg" alt="President 01" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Gemunu Mendis</h4><span class="pres-term">1980 / 81</span></div>
+          <div class="pres-card"><div class="pres-num">02</div><div class="pres-photo"><img loading="lazy" src="images/presidents/02.jpg" alt="President 02" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Jagath Perera</h4><span class="pres-term">1981 / 82</span></div>
+          <div class="pres-card"><div class="pres-num">03</div><div class="pres-photo"><img loading="lazy" src="images/presidents/03.jpg" alt="President 03" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Asiri Mendis</h4><span class="pres-term">1982 / 83</span></div>
+          <div class="pres-card"><div class="pres-num">04</div><div class="pres-photo"><img loading="lazy" src="images/presidents/04.jpg" alt="President 04" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Chandimal Fernando</h4><span class="pres-term">1983 / 84</span></div>
+          <div class="pres-card"><div class="pres-num">05</div><div class="pres-photo"><img loading="lazy" src="images/presidents/05.jpg" alt="President 05" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Kamal Fernando</h4><span class="pres-term">1984 / 85</span></div>
+
+          <div class="pres-card milestone-inline">
+            <div class="pres-milestone-icon"><i class="fas fa-star"></i></div>
+            <h4>5th Anniversary</h4>
+            <span class="pres-term">1985</span>
+          </div>
+
+          <div class="pres-card"><div class="pres-num">06</div><div class="pres-photo"><img loading="lazy" src="images/presidents/06.jpg" alt="President 06" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Shyamanthi Fernando</h4><span class="pres-term">1985 / 86</span></div>
+          <div class="pres-card"><div class="pres-num">07</div><div class="pres-photo"><img loading="lazy" src="images/presidents/07.jpg" alt="President 07" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Tyrone Fernando</h4><span class="pres-term">1986 / 87</span></div>
+          <div class="pres-card"><div class="pres-num">08</div><div class="pres-photo"><img loading="lazy" src="images/presidents/08.jpg" alt="President 08" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Hiran Mendis</h4><span class="pres-term">1987 / 88</span></div>
+          <div class="pres-card"><div class="pres-num">09</div><div class="pres-photo"><img loading="lazy" src="images/presidents/09.jpg" alt="President 09" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Gihan Haputhanthri</h4><span class="pres-term">1988 / 89</span></div>
+          <div class="pres-card"><div class="pres-num">10</div><div class="pres-photo"><img loading="lazy" src="images/presidents/10.jpg" alt="President 10" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Afaq Dole</h4><span class="pres-term">1989 / 90</span></div>
+        </div>
+
+        <div class="tl-milestone">
+          <div class="tl-ms-line"></div>
+          <div class="tl-ms-content">
+            <span class="tl-ms-year">1990</span>
+            <h3>10th Anniversary</h3>
+            <p>A decade of unwavering dedication — the club celebrated ten years of service and community impact.</p>
+          </div>
+          <div class="tl-ms-line"></div>
+        </div>
+
+        <div class="tl-decade-band">
+          <span>1990s</span>
+          <span class="tl-decade-sub">The Growth Years</span>
+        </div>
+        <div class="presidents-grid">
+          <div class="pres-card"><div class="pres-num">11</div><div class="pres-photo"><img loading="lazy" src="images/presidents/11.jpg" alt="President 11" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Mithraka Fernando</h4><span class="pres-term">1990 / 91</span></div>
+          <div class="pres-card"><div class="pres-num">12</div><div class="pres-photo"><img loading="lazy" src="images/presidents/12.jpg" alt="President 12" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Shavindra Dias</h4><span class="pres-term">1991 / 92</span></div>
+          <div class="pres-card"><div class="pres-num">13</div><div class="pres-photo"><img loading="lazy" src="images/presidents/13.jpg" alt="President 13" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>President Name</h4><span class="pres-term">1992 / 93</span></div>
+          <div class="pres-card"><div class="pres-num">14</div><div class="pres-photo"><img loading="lazy" src="images/presidents/14.jpg" alt="President 14" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>President Name</h4><span class="pres-term">1993 / 94</span></div>
+          <div class="pres-card"><div class="pres-num">15</div><div class="pres-photo"><img loading="lazy" src="images/presidents/15.jpg" alt="President 15" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Roshan Fernando</h4><span class="pres-term">1994 / 95</span></div>
+
+          <div class="pres-card milestone-inline">
+            <div class="pres-milestone-icon"><i class="fas fa-award"></i></div>
+            <h4>15th Anniversary</h4>
+            <span class="pres-term">1995</span>
+          </div>
+
+          <div class="pres-card"><div class="pres-num">16</div><div class="pres-photo"><img loading="lazy" src="images/presidents/16.jpg" alt="President 16" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Nalin Silva</h4><span class="pres-term">1995 / 96</span></div>
+          <div class="pres-card"><div class="pres-num">17</div><div class="pres-photo"><img loading="lazy" src="images/presidents/17.jpg" alt="President 17" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>President Name</h4><span class="pres-term">1996 / 97</span></div>
+          <div class="pres-card"><div class="pres-num">18</div><div class="pres-photo"><img loading="lazy" src="images/presidents/18.jpg" alt="President 18" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Suraj Silva</h4><span class="pres-term">1997 / 98</span></div>
+          <div class="pres-card"><div class="pres-num">19</div><div class="pres-photo"><img loading="lazy" src="images/presidents/19.jpg" alt="President 19" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Sameera Mendis</h4><span class="pres-term">1998 / 99</span></div>
+          <div class="pres-card"><div class="pres-num">20</div><div class="pres-photo"><img loading="lazy" src="images/presidents/20.jpg" alt="President 20" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>President Name</h4><span class="pres-term">1999 / 00</span></div>
+        </div>
+
+        <div class="tl-milestone">
+          <div class="tl-ms-line"></div>
+          <div class="tl-ms-content">
+            <span class="tl-ms-year">2000</span>
+            <h3>20th Anniversary &amp; New Millennium</h3>
+            <p>Welcoming the new millennium with two decades of proud service — the club entered a new era of growth and recognition.</p>
+          </div>
+          <div class="tl-ms-line"></div>
+        </div>
+
+        <div class="tl-decade-band">
+          <span>2000s</span>
+          <span class="tl-decade-sub">The Expansion Era</span>
+        </div>
+        <div class="presidents-grid">
+          <div class="pres-card"><div class="pres-num">21</div><div class="pres-photo"><img loading="lazy" src="images/presidents/21.jpg" alt="President 21" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Ranil Mendis</h4><span class="pres-term">2000 / 01</span></div>
+          <div class="pres-card"><div class="pres-num">22</div><div class="pres-photo"><img loading="lazy" src="images/presidents/22.jpg" alt="President 22" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Sajith Peiris</h4><span class="pres-term">2001 / 02</span></div>
+          <div class="pres-card"><div class="pres-num">23</div><div class="pres-photo"><img loading="lazy" src="images/presidents/23.jpg" alt="President 23" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>President Name</h4><span class="pres-term">2002 / 03</span></div>
+          <div class="pres-card"><div class="pres-num">24</div><div class="pres-photo"><img loading="lazy" src="images/presidents/24.jpg" alt="President 24" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Sewwandi Wijerathne</h4><span class="pres-term">2003 / 04</span></div>
+          <div class="pres-card"><div class="pres-num">25</div><div class="pres-photo"><img loading="lazy" src="images/presidents/25.jpg" alt="President 25" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Pubudu Wijeratne</h4><span class="pres-term">2004 / 05</span></div>
+
+          <div class="pres-card milestone-inline">
+            <div class="pres-milestone-icon"><i class="fas fa-trophy"></i></div>
+            <h4>Silver Jubilee — 25 Years</h4>
+            <span class="pres-term">2005</span>
+          </div>
+
+          <div class="pres-card"><div class="pres-num">26</div><div class="pres-photo"><img loading="lazy" src="images/presidents/26.jpg" alt="President 26" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Malshika De Silva</h4><span class="pres-term">2005 / 06</span></div>
+          <div class="pres-card"><div class="pres-num">27</div><div class="pres-photo"><img loading="lazy" src="images/presidents/27.jpg" alt="President 27" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Dillen Ranasinghe</h4><span class="pres-term">2006 / 07</span></div>
+          <div class="pres-card"><div class="pres-num">28</div><div class="pres-photo"><img loading="lazy" src="images/presidents/28.jpg" alt="President 28" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Shohana Wijesuriya</h4><span class="pres-term">2007 / 08</span></div>
+          <div class="pres-card"><div class="pres-num">29</div><div class="pres-photo"><img loading="lazy" src="images/presidents/29.jpg" alt="President 29" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>President Name</h4><span class="pres-term">2008 / 09</span></div>
+          <div class="pres-card"><div class="pres-num">30</div><div class="pres-photo"><img loading="lazy" src="images/presidents/30.jpg" alt="President 30" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>President Name</h4><span class="pres-term">2009 / 10</span></div>
+        </div>
+
+        <div class="tl-milestone">
+          <div class="tl-ms-line"></div>
+          <div class="tl-ms-content">
+            <span class="tl-ms-year">2010</span>
+            <h3>30th Anniversary</h3>
+            <p>Three decades of leadership, fellowship, and service — the club stood stronger than ever with growing membership and recognition.</p>
+          </div>
+          <div class="tl-ms-line"></div>
+        </div>
+
+        <div class="tl-decade-band">
+          <span>2010s</span>
+          <span class="tl-decade-sub">The Excellence Decade</span>
+        </div>
+        <div class="presidents-grid">
+          <div class="pres-card"><div class="pres-num">31</div><div class="pres-photo"><img loading="lazy" src="images/presidents/31.jpg" alt="President 31" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Achintha Samindika</h4><span class="pres-term">2010 / 11</span></div>
+          <div class="pres-card"><div class="pres-num">32</div><div class="pres-photo"><img loading="lazy" src="images/presidents/32.jpg" alt="President 32" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Nataliya De Silva</h4><span class="pres-term">2011 / 12</span></div>
+          <div class="pres-card"><div class="pres-num">33</div><div class="pres-photo"><img loading="lazy" src="images/presidents/33.jpg" alt="President 33" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Dakshina Udayanga</h4><span class="pres-term">2012 / 13</span></div>
+          <div class="pres-card"><div class="pres-num">34</div><div class="pres-photo"><img loading="lazy" src="images/presidents/34.jpg" alt="President 34" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Darshana Ranasinghe</h4><span class="pres-term">2013 / 14</span></div>
+          <div class="pres-card"><div class="pres-num">35</div><div class="pres-photo"><img loading="lazy" src="images/presidents/35.jpg" alt="President 35" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Thilina De Silva</h4><span class="pres-term">2014 / 15</span></div>
+
+          <div class="pres-card milestone-inline">
+            <div class="pres-milestone-icon"><i class="fas fa-medal"></i></div>
+            <h4>35th Anniversary</h4>
+            <span class="pres-term">2015</span>
+          </div>
+
+          <div class="pres-card"><div class="pres-num">36</div><div class="pres-photo"><img loading="lazy" src="images/presidents/36.jpg" alt="President 36" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Lahiru Gayan</h4><span class="pres-term">2015 / 16</span></div>
+          <div class="pres-card"><div class="pres-num">37</div><div class="pres-photo"><img loading="lazy" src="images/presidents/37.jpg" alt="President 37" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Dilshan Peiris</h4><span class="pres-term">2016 / 17</span></div>
+          <div class="pres-card"><div class="pres-num">38</div><div class="pres-photo"><img loading="lazy" src="images/presidents/38.jpg" alt="President 38" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Suharshi Fernando</h4><span class="pres-term">2017 / 18</span></div>
+          <div class="pres-card"><div class="pres-num">39</div><div class="pres-photo"><img loading="lazy" src="images/presidents/39.jpg" alt="President 39" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Sahan Peiris</h4><span class="pres-term">2018 / 19</span></div>
+          <div class="pres-card"><div class="pres-num">40</div><div class="pres-photo"><img loading="lazy" src="images/presidents/40.jpg" alt="President 40" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Hasitha Perera</h4><span class="pres-term">2019 / 20</span></div>
+        </div>
+
+        <div class="tl-milestone">
+          <div class="tl-ms-line"></div>
+          <div class="tl-ms-content">
+            <span class="tl-ms-year">2020</span>
+            <h3>40th Anniversary</h3>
+            <p>Four decades of impact — 1000+ Leos, 200+ projects, and 250+ awards. A club that rose through every challenge.</p>
+          </div>
+          <div class="tl-ms-line"></div>
+        </div>
+
+        <div class="tl-decade-band">
+          <span>2020s</span>
+          <span class="tl-decade-sub">The New Chapter</span>
+        </div>
+        <div class="presidents-grid">
+          <div class="pres-card"><div class="pres-num">41</div><div class="pres-photo"><img loading="lazy" src="images/presidents/41.jpg" alt="President 41" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Akila Buddhika Gunarathne</h4><span class="pres-term">2020 / 21</span></div>
+          <div class="pres-card"><div class="pres-num">42</div><div class="pres-photo"><img loading="lazy" src="images/presidents/42.jpg" alt="President 42" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Udara Dissanayake</h4><span class="pres-term">2021 / 22</span></div>
+          <div class="pres-card"><div class="pres-num">43</div><div class="pres-photo"><img loading="lazy" src="images/presidents/43.jpg" alt="President 43" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Shenali Warunika</h4><span class="pres-term">2022 / 23</span></div>
+          <div class="pres-card"><div class="pres-num">44</div><div class="pres-photo"><img loading="lazy" src="images/presidents/44.jpg" alt="President 44" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Harish Sagar</h4><span class="pres-term">2023 / 24</span></div>
+          <div class="pres-card"><div class="pres-num">45</div><div class="pres-photo"><img loading="lazy" src="images/presidents/45.jpg" alt="President 45" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Kasun Sapumohotti</h4><span class="pres-term">2024 / 25</span></div>
+          <div class="pres-card"><div class="pres-num">46</div><div class="pres-photo"><img loading="lazy" src="images/presidents/46.jpg" alt="President 46" onerror="this.parentElement.innerHTML='&lt;div class=&quot;pres-ph&quot;&gt;&lt;i class=&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;/div&gt;'" /><div class="pres-ph" style="display:none"><i class="fas fa-user"></i></div></div><h4>Lion Chamal Pramod</h4><span class="pres-term">2025 / 26</span></div>
+        </div>
+
+        <div class="tl-milestone present">
+          <div class="tl-ms-line"></div>
+          <div class="tl-ms-content">
+            <span class="tl-ms-year">2026</span>
+            <h3>46th Year · Present Day</h3>
+            <p>Carrying forward the spirit of the samurai — with honor, discipline, and courage — the Leo Club of Moratuwa continues to serve, lead, and inspire.</p>
+          </div>
+          <div class="tl-ms-line"></div>
+        </div>
+
+      </div><!-- end .history-timeline -->
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact-section" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <p class="section-tag">CONTACT US</p>
+        <h2 class="section-title spaced">Your Voice, Our Mission</h2>
+        <p>Every message is a new connection. Ask us anything, share an idea, or take the first step toward joining us.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Lions Activity Center, Moratuwa 10400, Sri Lanka</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:leoclubofmoratuwa@gmail.com">leoclubofmoratuwa@gmail.com</a>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://web.facebook.com/LeoClubOfMoratuwa" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/mora_leos/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@leoclubofmoratuwa1321" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.linkedin.com/company/leo-club-of-moratuwa/posts/?feedView=all" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form id="contactForm" novalidate>
+          <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Your Name" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Your Email" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <input type="text" id="subject" name="subject" placeholder="Subject" required />
+          </div>
+          <div class="form-group">
+            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full">Send Message <i class="fas fa-paper-plane"></i></button>
+          <div id="formMsg" class="form-msg" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="nav-logo">
+          <img src="images/logo/logo.png" alt="Leo Club of Moratuwa" class="nav-club-logo" />
+          Leo Club <span>of Moratuwa</span>
+        </a>
+        <p>Bold in Service. United in Purpose. Join us in making a difference — locally and globally.</p>
+        <div class="social-links">
+          <a href="https://web.facebook.com/LeoClubOfMoratuwa" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/mora_leos/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@leoclubofmoratuwa1321" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.linkedin.com/company/leo-club-of-moratuwa/posts/?feedView=all" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#awards">Awards</a></li>
+          <li><a href="#" target="_blank" rel="noopener noreferrer">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Info</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Lions Activity Center, Moratuwa 10400</p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:leoclubofmoratuwa@gmail.com">leoclubofmoratuwa@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Leo Club of Moratuwa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <a href="#home" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
+
+  <!-- ===== PRESIDENT FULL-PAGE COVER ===== -->
+  <div class="pres-modal-overlay" id="presModal" role="dialog" aria-modal="true" aria-labelledby="presModalTitle">
+    <div class="pres-modal">
+
+      <!-- Fixed close button -->
+      <button class="pres-modal-close" id="presModalClose" aria-label="Back to Club History">Back</button>
+
+      <!-- HERO: full-viewport two-column layout -->
+      <div class="pres-modal-header">
+
+        <!-- Left panel — president photo fills the panel -->
+        <div class="pres-modal-left">
+          <div class="pres-modal-photo-wrap">
+            <img class="pres-modal-img" id="presModalImg" src="" alt="" />
+            <div class="pres-modal-ph" id="presModalPh"><i class="fas fa-user"></i></div>
+            <div class="pres-modal-photo-glow"></div>
+          </div>
+          <div class="pres-modal-id">
+            <span class="pres-modal-num" id="presModalNum">#01</span>
+            <span class="pres-modal-term-badge" id="presModalTerm">1980 / 81</span>
+          </div>
+        </div>
+
+        <!-- Right panel — name, quote -->
+        <div class="pres-modal-right-hero">
+          <span class="pres-modal-tag">// MEMORIES OF PRESIDENT</span>
+          <h2 class="pres-modal-title" id="presModalTitle">PRESIDENT NAME</h2>
+          <div class="pres-modal-divider"></div>
+          <p class="pres-modal-quote" id="presModalQuote">"A legacy carved in service, leadership &amp; fellowship."</p>
+        </div>
+
+        <!-- Scroll hint -->
+        <div class="pres-modal-scroll-hint">
+          <i class="fas fa-chevron-down"></i>
+          <span>Scroll for memories</span>
+        </div>
+
+      </div><!-- end .pres-modal-header -->
+
+      <!-- MEMORIES SECTION — below the hero -->
+      <div class="pres-modal-body">
+        <div class="pres-modal-mem-title">
+          <span class="pres-modal-mem-line"></span>
+          <span class="pres-modal-mem-label" id="presModalMemLabel">MEMORIES OF PRESIDENT</span>
+          <span class="pres-modal-mem-line"></span>
+        </div>
+        <div class="pres-modal-gallery" id="presModalGallery">
+          <!-- Populated by JS -->
+        </div>
+        <div class="pres-load-more-wrap">
+          <button class="pres-load-more" id="presModalLoadMore" style="display:none">
+            Load More Photos <i class="fas fa-images"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="data/presidents.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
