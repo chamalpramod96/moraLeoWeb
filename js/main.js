@@ -13,6 +13,7 @@
  *   §7  Contact Form ........... client-side validation + simulated submit
  *   §8  President Modal ........ full-page cover with paginated photo gallery
  *   §9  Project Map ............ Leaflet.js Sri Lanka map with project markers
+ *   §10 Newsletter Flipbook .... click a newsletter cover to page through it
  *
  * ── HOW TO UPDATE PRESIDENT NAMES / PHOTOS ──────────────────────────────────
  *   Edit  data/presidents.json  — set  name, term, memories  for each entry.
@@ -197,6 +198,7 @@ const REVEAL_SELECTORS = [
   '.team-card',
   '.award-card',
   '.blog-card',
+  '.newsletter-card',
   '.about-grid',
   '.contact-grid',
 ].join(', ');
@@ -745,5 +747,253 @@ if (contactForm) {
       legendList.appendChild(li);
     }
   });
+
+}());
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// §10  NEWSLETTER FLIPBOOK
+// Clicking a newsletter cover opens a centered viewer. Two source modes, picked
+// per-card:
+//
+//   data-embed="https://heyzine.com/flip-book/xxxx.html"  → shown in an iframe.
+//     Heyzine's own viewer has its own page-turn UI, zoom, fullscreen etc., so
+//     our prev/next/counter are hidden in this mode — Heyzine handles paging.
+//   data-pages="a.jpg,b.jpg,..."  → our own image viewer with a CSS flip
+//     animation and prev/next/counter controls.
+//
+// ── SHAREABLE LINKS ──────────────────────────────────────────────────────────
+// Each card's data-slug becomes ?newsletter=<slug> in the URL while its viewer
+// is open (via history.replaceState — no page reload, no extra back-history
+// entry). Opening the site with that query param present auto-opens the
+// matching newsletter on load. The Share button copies (or native-shares) that
+// exact URL, so a shared link always lands on the right edition.
+//
+// ── TO ADD A NEWSLETTER ──────────────────────────────────────────────────────
+//   1. Duplicate a .newsletter-card block in the Newsletters section of
+//      index.html, update data-slug / data-title / data-issue, and set
+//      data-embed OR data-pages (see the comment above that section in index.html).
+//   2. The card's cover <img> (grid thumbnail) still needs its own src.
+//   No JS edits needed — this script reads those data attributes.
+// ─────────────────────────────────────────────────────────────────────────────
+
+(function newsletterFlipbook() {
+
+  const overlay    = document.getElementById('flipbookModal');
+  const stageEl    = document.querySelector('.flipbook-stage');
+  const bookEl     = document.querySelector('.flipbook-book');
+  const closeBtn   = document.getElementById('flipbookClose');
+  const shareBtn   = document.getElementById('flipbookShare');
+  const shareToast = document.getElementById('flipbookShareToast');
+  const prevBtn    = document.getElementById('flipbookPrev');
+  const nextBtn    = document.getElementById('flipbookNext');
+  const imgEl        = document.getElementById('flipbookImg');
+  const iframeEl     = document.getElementById('flipbookIframe');
+  const loadingEl    = document.getElementById('flipbookLoading');
+  const loadingTextEl= document.getElementById('flipbookLoadingText');
+  const fallbackLink = document.getElementById('flipbookFallbackLink');
+  const titleEl      = document.getElementById('flipbookTitle');
+  const issueEl      = document.getElementById('flipbookIssue');
+  const counterEl    = document.getElementById('flipbookCounter');
+  if (!overlay) return;
+
+  const FLIP_DURATION    = 350;  // ms — must match the CSS transition on .flipbook-flip
+  const FALLBACK_TIMEOUT = 8000; // ms — how long to wait before offering the "open directly" link
+  const SHARE_PARAM      = 'newsletter';
+
+  let mode          = 'images'; // 'images' | 'embed'
+  let pages         = [];       // image mode: array of image URLs
+  let totalPages    = 0;
+  let current       = 0;
+  let fallbackTimer = null;     // pending "still loading" fallback reveal, cleared on load/close
+  let currentSlug   = null;     // slug of the open newsletter — null when none is open
+  let toastTimer    = null;
+
+  function updateUI() {
+    counterEl.textContent = 'Page ' + (current + 1) + ' / ' + totalPages;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === totalPages - 1;
+    prevBtn.style.display = nextBtn.style.display = totalPages > 1 ? 'flex' : 'none';
+  }
+
+  /** Turns to a new page with a brief rotate-away / rotate-in animation (image mode only). */
+  function goToPage(index) {
+    if (mode !== 'images' || index < 0 || index >= totalPages || index === current) return;
+
+    imgEl.classList.add('turning');
+    setTimeout(() => {
+      current   = index;
+      imgEl.src = pages[current];
+      updateUI();
+      requestAnimationFrame(() => imgEl.classList.remove('turning'));
+    }, FLIP_DURATION);
+  }
+
+  function openFlipbook(card) {
+    const embedUrl  = card.getAttribute('data-embed');
+    const pagesAttr = card.getAttribute('data-pages');
+
+    titleEl.textContent = card.getAttribute('data-title') || 'Newsletter';
+    issueEl.textContent = card.getAttribute('data-issue') || '';
+    current = 0;
+
+    currentSlug = card.getAttribute('data-slug') || null;
+    if (currentSlug) {
+      const url = new URL(location.href);
+      url.search = ''; // this site has no other query params to preserve
+      url.searchParams.set(SHARE_PARAM, currentSlug);
+      history.replaceState(null, '', url);
+    }
+    shareBtn.style.display = currentSlug ? 'flex' : 'none'; // nothing to link to without a slug
+
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    if (embedUrl) {
+      mode = 'embed';
+      stageEl.classList.add('embed-mode');
+      bookEl.classList.add('embed-mode');
+
+      imgEl.style.display    = 'none';
+      iframeEl.style.display = 'block';
+      prevBtn.style.display  = nextBtn.style.display = 'none'; // Heyzine has its own page controls
+      counterEl.textContent  = '';
+
+      loadingTextEl.textContent = 'Loading newsletter…';
+      fallbackLink.classList.remove('show');
+      fallbackLink.href = embedUrl;
+      loadingEl.style.display = 'flex';
+
+      clearTimeout(fallbackTimer);
+      fallbackTimer = setTimeout(() => fallbackLink.classList.add('show'), FALLBACK_TIMEOUT);
+
+      iframeEl.onload = () => {
+        loadingEl.style.display = 'none';
+        clearTimeout(fallbackTimer);
+      };
+      iframeEl.src = embedUrl;
+
+    } else if (pagesAttr) {
+      mode  = 'images';
+      pages = pagesAttr.split(',').map(p => p.trim()).filter(Boolean);
+      if (!pages.length) return;
+
+      stageEl.classList.remove('embed-mode');
+      bookEl.classList.remove('embed-mode');
+
+      iframeEl.style.display  = 'none';
+      imgEl.style.display     = 'block';
+      loadingEl.style.display = 'none';
+
+      totalPages = pages.length;
+      imgEl.src  = pages[0];
+      updateUI();
+    }
+  }
+
+  function closeFlipbook() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    clearTimeout(fallbackTimer);
+    iframeEl.onload = null;
+    iframeEl.src = ''; // stop the embedded viewer (and any audio/animation) once closed
+    imgEl.src = '';
+
+    if (currentSlug) {
+      const url = new URL(location.href);
+      url.searchParams.delete(SHARE_PARAM);
+      history.replaceState(null, '', url.pathname + url.hash);
+    }
+    currentSlug = null;
+  }
+
+  /** Copies (or native-shares) a direct link to the currently open newsletter. */
+  function shareCurrentNewsletter() {
+    if (!currentSlug) return;
+    const url = new URL(location.href);
+    url.search = '';
+    url.searchParams.set(SHARE_PARAM, currentSlug);
+    const shareUrl = url.toString();
+
+    // isSecureContext guard: some browsers expose navigator.share even where it can't
+    // actually run, and calling it there is a known source of hard crashes — not just
+    // JS errors — so we don't rely on feature-detecting the function alone.
+    if (navigator.share && window.isSecureContext) {
+      try {
+        navigator.share({ title: titleEl.textContent, url: shareUrl }).catch(() => {}); // user cancelled — not an error
+        return;
+      } catch (err) {
+        console.error('[Newsletter] Web Share failed, falling back to copy:', err);
+      }
+    }
+
+    copyToClipboard(shareUrl);
+  }
+
+  /**
+   * Copies text via the classic execCommand technique rather than the modern
+   * navigator.clipboard API. This page has a cross-origin iframe (the Heyzine embed)
+   * and, in that combination, the async Clipboard API has been observed to crash the
+   * whole tab (RESULT_CODE_KILLED_BAD_MESSAGE) instead of failing gracefully — a
+   * temporary-textarea + execCommand('copy') avoids that permissions-broker path entirely.
+   */
+  function copyToClipboard(text) {
+    const temp = document.createElement('textarea');
+    temp.value = text;
+    temp.setAttribute('readonly', '');
+    temp.style.position = 'fixed';
+    temp.style.left = '-9999px';
+    document.body.appendChild(temp);
+    temp.select();
+    temp.setSelectionRange(0, text.length);
+
+    let copied = false;
+    try {
+      copied = document.execCommand('copy');
+    } catch (err) {
+      copied = false;
+    }
+    document.body.removeChild(temp);
+
+    if (copied) showShareToast();
+    else window.prompt('Copy this link:', text); // last-resort fallback
+  }
+
+  function showShareToast() {
+    shareToast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => shareToast.classList.remove('show'), 2200);
+  }
+
+  document.querySelectorAll('.newsletter-card').forEach(card => {
+    card.addEventListener('click', () => openFlipbook(card));
+    card.setAttribute('tabindex', '0');
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') openFlipbook(card);
+    });
+  });
+
+  prevBtn.addEventListener('click', () => goToPage(current - 1));
+  nextBtn.addEventListener('click', () => goToPage(current + 1));
+  closeBtn.addEventListener('click', closeFlipbook);
+  shareBtn.addEventListener('click', shareCurrentNewsletter);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeFlipbook(); });
+
+  document.addEventListener('keydown', e => {
+    if (!overlay.classList.contains('open')) return;
+    if (e.key === 'Escape')     closeFlipbook();
+    if (e.key === 'ArrowLeft')  goToPage(current - 1);
+    if (e.key === 'ArrowRight') goToPage(current + 1);
+  });
+
+  // ── Deep link on page load: ?newsletter=<slug> auto-opens the matching card ──
+  const requestedSlug = new URLSearchParams(location.search).get(SHARE_PARAM);
+  if (requestedSlug) {
+    const match = document.querySelector('.newsletter-card[data-slug="' + CSS.escape(requestedSlug) + '"]');
+    if (match) {
+      document.getElementById('newsletters').scrollIntoView();
+      openFlipbook(match);
+    }
+  }
 
 }());

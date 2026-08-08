@@ -19,8 +19,10 @@
   <meta name="twitter:title" content="Leo Club of Moratuwa" />
   <meta name="twitter:description" content="Leo Club of Moratuwa — a dynamic community of young leaders dedicated to service, leadership, and growth since 1980." />
   <meta name="twitter:image" content="images/logo/logo.png" />
-  <link rel="stylesheet" href="css/style.css?v=20260730" />
-  <link rel="stylesheet" href="css/responsive.css?v=20260730" />
+  <link rel="stylesheet" href="css/style.css?v=20260808e" />
+  <link rel="stylesheet" href="css/responsive.css?v=20260808e" />
+  <link rel="preconnect" href="https://heyzine.com" crossorigin />
+  <link rel="dns-prefetch" href="https://heyzine.com" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -40,6 +42,7 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#team">Team</a></li>
         <li><a href="#awards">Awards</a></li>
+        <li><a href="#newsletters">Newsletters</a></li>
         <!-- TODO: replace "#" with the live external blog URL once hosted -->
         <li><a href="#" target="_blank" rel="noopener noreferrer">Blog</a></li>
         <li><a href="#projectmap">Map</a></li>
@@ -413,6 +416,31 @@
     </div>
   </section>
 
+  <!-- ===== NEWSLETTERS ===== -->
+  <section class="newsletters-section" id="newsletters">
+    <div class="container">
+      <p class="section-tag">NEWSLETTERS</p>
+      <h2 class="section-title spaced">Inspire. Inform. Impact.</h2>
+      <p class="section-sub">Flip through our monthly Newsletters and relive the stories, projects, and moments that define the Leo Club of Moratuwa.</p>
+      <div class="newsletters-grid" id="newslettersGrid">
+        <div class="newsletter-card" data-slug="july-2026" data-title="July 2026 Newsletter" data-issue="JULY 2026" data-embed="https://heyzine.com/flip-book/44b5903acf.html">
+          <div class="newsletter-cover">
+            <img loading="lazy" src="images/newsLetters/july/coverPhoto/july.png" alt="July 2026 Newsletter" onerror="this.parentElement.innerHTML='&lt;i class=&quot;fas fa-newspaper&quot;&gt;&lt;/i&gt;'" />
+            <div class="newsletter-cover-overlay">
+              <i class="fas fa-book-open"></i>
+              <span>Read Newsletter</span>
+            </div>
+          </div>
+          <div class="newsletter-info">
+            <span class="newsletter-issue">Evoke | July</span>
+            <h3>July Edition | Vol. 01</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ===== PROJECT MAP ===== -->
   <section class="projectmap-section" id="projectmap">
     <div class="container">
@@ -684,6 +712,7 @@
           <li><a href="#projects">Projects</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="#awards">Awards</a></li>
+          <li><a href="#newsletters">Newsletters</a></li>
           <li><a href="#" target="_blank" rel="noopener noreferrer">Blog</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -758,6 +787,35 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- ===== NEWSLETTER FLIPBOOK ===== -->
+  <div class="flipbook-overlay" id="flipbookModal" role="dialog" aria-modal="true" aria-labelledby="flipbookTitle">
+    <button class="pres-modal-close" id="flipbookClose" aria-label="Close newsletter">Close</button>
+    <button class="pres-modal-close flipbook-share-btn" id="flipbookShare" aria-label="Share this newsletter">
+      <i class="fas fa-share-nodes"></i> Share
+    </button>
+    <div class="flipbook-stage">
+      <span class="flipbook-issue" id="flipbookIssue"></span>
+      <h3 class="flipbook-title" id="flipbookTitle"></h3>
+      <span class="flipbook-share-toast" id="flipbookShareToast">Link copied!</span>
+      <div class="flipbook-book">
+        <button class="team-arrow flipbook-arrow flipbook-prev" id="flipbookPrev" aria-label="Previous page"><i class="fas fa-chevron-left"></i></button>
+        <div class="flipbook-page">
+          <img class="flipbook-page-img flipbook-flip" id="flipbookImg" src="" alt="" />
+          <iframe class="flipbook-page-iframe" id="flipbookIframe" src="" title="Newsletter flip-book" allow="fullscreen" allowfullscreen></iframe>
+          <div class="flipbook-loading" id="flipbookLoading">
+            <i class="fas fa-spinner fa-spin"></i>
+            <span id="flipbookLoadingText">Loading newsletter&hellip;</span>
+            <a href="#" id="flipbookFallbackLink" class="flipbook-fallback-link" target="_blank" rel="noopener noreferrer">
+              Taking longer than usual — open it directly <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+        <button class="team-arrow flipbook-arrow flipbook-next" id="flipbookNext" aria-label="Next page"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="flipbook-counter" id="flipbookCounter">Page 1 / 1</div>
     </div>
   </div>
 

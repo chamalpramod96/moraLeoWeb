@@ -872,6 +872,209 @@ img { max-width: 100%; display: block; }
 .blog-info p  { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.2rem; }
 
 /* ===========================
+   NEWSLETTERS
+=========================== */
+.newsletters-section { padding: 7rem 0; background: var(--bg-dark); text-align: center; }
+.newsletters-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 3rem; }
+
+.newsletter-card {
+  width: 260px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+}
+.newsletter-card:hover { border-color: var(--gold); transform: translateY(-6px); box-shadow: var(--shadow-gold); }
+
+.newsletter-cover {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, #100000, #1a0500);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem; color: var(--red);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.newsletter-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.newsletter-card:hover .newsletter-cover img { transform: scale(1.06); }
+
+.newsletter-cover-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(8,0,1,0.92) 0%, rgba(8,0,1,0.35) 55%, transparent 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.6rem;
+  color: var(--gold);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.newsletter-cover-overlay i { font-size: 1.8rem; }
+.newsletter-cover-overlay span { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+.newsletter-card:hover .newsletter-cover-overlay { opacity: 1; }
+
+.newsletter-info { padding: 1.2rem 1.5rem; }
+.newsletter-issue { font-size: 0.7rem; letter-spacing: 2.5px; color: var(--gold); text-transform: uppercase; font-weight: 700; }
+.newsletter-info h3 { font-size: 1.05rem; font-weight: 700; margin-top: 0.5rem; }
+
+/* ===========================
+   NEWSLETTER FLIPBOOK MODAL
+=========================== */
+.flipbook-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(8, 0, 1, 0.92);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.flipbook-overlay.open { opacity: 1; visibility: visible; }
+
+.flipbook-stage {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: max-width 0.3s ease;
+}
+
+/* Embedded flip-books (data-embed) are landscape, double-page viewers — give them more room */
+.flipbook-stage.embed-mode { max-width: 1000px; }
+
+.flipbook-issue { font-size: 0.68rem; letter-spacing: 4px; color: var(--gold-dark); text-transform: uppercase; font-weight: 700; margin-bottom: 0.5rem; }
+.flipbook-title { font-size: clamp(1.1rem, 2.4vw, 1.5rem); font-weight: 700; margin-bottom: 1.5rem; text-align: center; }
+
+.flipbook-book {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  max-height: 68vh;
+  background: #0a0001;
+  border: 1px solid var(--border-gold);
+  border-radius: 10px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6), var(--shadow-gold);
+  overflow: hidden;
+  perspective: 2000px;
+  transition: aspect-ratio 0.3s ease;
+}
+
+.flipbook-book.embed-mode { aspect-ratio: 4 / 3; max-height: 78vh; }
+
+.flipbook-page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Shared page-turn transition — applied to whichever visual is active (img or canvas) */
+.flipbook-flip {
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+.flipbook-flip.turning { transform: rotateY(90deg) scale(0.92); opacity: 0.15; }
+
+/* Image-based newsletter pages (data-pages) */
+.flipbook-page-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fff;
+  display: none; /* toggled to block by JS when in image mode */
+}
+
+.flipbook-page-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+  display: none; /* toggled to block by JS when in embed mode */
+}
+
+.flipbook-loading {
+  position: absolute;
+  inset: 0;
+  display: none; /* toggled to flex by JS while the embed loads */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  font-size: 1.8rem;
+  color: var(--gold);
+  background: rgba(10, 0, 1, 0.6);
+  z-index: 2;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+#flipbookLoadingText { font-size: 0.8rem; letter-spacing: 1px; color: var(--text-secondary); }
+
+.flipbook-fallback-link {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--gold);
+  border: 1px solid var(--border-gold);
+  border-radius: 30px;
+  padding: 0.6rem 1.2rem;
+  background: rgba(0, 0, 0, 0.4);
+  transition: var(--transition);
+}
+.flipbook-fallback-link:hover { background: var(--red); border-color: var(--red); color: #fff; }
+.flipbook-fallback-link.show { display: inline-flex; }
+
+.flipbook-arrow.flipbook-prev { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); z-index: 3; }
+.flipbook-arrow.flipbook-next { position: absolute; right: 0.8rem; top: 50%; transform: translateY(-50%); z-index: 3; }
+
+.flipbook-counter { margin-top: 1.2rem; font-size: 0.78rem; letter-spacing: 1.5px; color: var(--text-secondary); }
+
+#flipbookShare { left: 1.4rem; right: auto; }
+#flipbookShare::before { content: none; }
+#flipbookShare i { margin-right: 0.3rem; }
+
+.flipbook-share-toast {
+  position: fixed;
+  top: 3.6rem;
+  left: 1.4rem;
+  z-index: 2100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--gold);
+  background: rgba(8, 0, 1, 0.92);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  padding: 0.45rem 1.1rem;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.flipbook-share-toast.show { opacity: 1; visibility: visible; transform: translateY(0); }
+
+@media (max-width: 560px) {
+  .flipbook-book { max-height: 60vh; }
+  .flipbook-book.embed-mode { aspect-ratio: 3 / 4; } /* Heyzine's own layout adapts to portrait on small screens */
+  .flipbook-arrow.flipbook-prev { left: 0.3rem; }
+  .flipbook-arrow.flipbook-next { right: 0.3rem; }
+}
+
+/* ===========================
    CONTACT
 =========================== */
 .contact-section { padding: 7rem 0; background: var(--bg-dark); }
